@@ -11,9 +11,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AddAdsComponent } from './components/add-ads/add-ads.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AdComponent } from './components/ad/ad.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, AdsComponent, ProfileComponent, AddAdsComponent, NotFoundComponent, HeaderComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, AdsComponent, ProfileComponent, AddAdsComponent, NotFoundComponent, HeaderComponent, AdComponent],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
