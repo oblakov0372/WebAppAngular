@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Ad } from 'src/app/models/IAd';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-ad',
@@ -7,13 +8,12 @@ import { Ad } from 'src/app/models/IAd';
   styleUrls: ['./ad.component.scss'],
 })
 export class AdComponent implements OnInit {
-  obj!: Ad;
+  @Input() ad!: Ad;
   isClickLike = false;
-  likes: number = 0;
-  constructor() {}
+  constructor(private httpSetvice: HttpService) {}
   onClickLike() {
     this.isClickLike = !this.isClickLike;
-    this.isClickLike ? (this.likes += 1) : (this.likes -= 1);
+    this.isClickLike ? (this.ad.likes += 1) : (this.ad.likes -= 1);
   }
   ngOnInit(): void {}
 }

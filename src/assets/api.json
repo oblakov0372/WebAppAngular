@@ -1,0 +1,78 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user1@gmail.com",
+      "password": "user1234",
+      "name": "user1"
+    },
+    {
+      "id": 2,
+      "email": "user2@gmail.com",
+      "password": "user12345",
+      "name": "user2"
+    }
+  ],
+  "organizations": [
+    {
+      "id": 2,
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "name": "admin"
+    }
+  ],
+  "ads": [
+    {
+      "id": 1,
+      "title": "Senior Fullstack Developer (Node.js + Angular/React)",
+      "description": "AUG Global Technologies LTD is a Software Technology business with over 30 years of history. As we continue to grow and develop, the next step in our exciting journey is our brand-new office in Sofia.      So, let’s start creating history together!",
+      "type": "full-time",
+      "category": "Development",
+      "likes": 0,
+      "appliedUsers": {
+        "1": "Not viewed",
+        "2": "Confirmed"
+      },
+      "organization": 2
+    },
+    {
+      "id": 2,
+      "title": "Front-end Developer /Angular/",
+      "description": "Information Services JSC is among the leaders in providing high-tech ICT services on the Bulgarian market.",
+      "type": "part-time",
+      "category": "Office administration",
+      "likes": 0,
+      "appliedUsers": {
+        "1": "Rejected",
+        "2": "Not viewed"
+      },
+      "organization": 2
+    },
+    {
+      "id": 3,
+      "title": "Front-end Developer /Angular/",
+      "description": "Information Services JSC is among the leaders in providing high-tech ICT services on the Bulgarian market.",
+      "type": "full-time",
+      "category": "Development",
+      "likes": 0,
+      "appliedUsers": {
+        "1": "Not viewed",
+        "2": "Confirmed"
+      },
+      "organization": 2
+    },
+    {
+      "id": 4,
+      "title": "Front-end Developer /Angular/",
+      "description": "Information Services JSC is among the leaders in providing high-tech ICT services on the Bulgarian market.",
+      "type": "full-time",
+      "category": "Office administration",
+      "likes": 0,
+      "appliedUsers": {
+        "2": "Rejected",
+        "1": "Confirmed"
+      },
+      "organization": 2
+    }
+  ]
+}

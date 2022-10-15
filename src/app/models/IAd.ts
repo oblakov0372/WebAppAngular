@@ -1,19 +1,19 @@
-import { User } from './IUser';
+import { User } from './User';
 
 export interface Ad {
   id: number;
   title: string;
   description: string;
-  countLikes: number;
+  likes: number;
   type: Type;
   category: Category;
-  candidateUsers: User[];
+  appliedUsers: User[];
 }
 
 enum Type {
-  partTime = 'Part-time',
-  fullTime = 'Full-time',
-  remote = 'Remote',
+  partTime = 'part-time',
+  fullTime = 'full-time',
+  remote = 'remote',
 }
 
 enum Category {

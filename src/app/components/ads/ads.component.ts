@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Ad } from 'src/app/models/IAd';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-ads',
   templateUrl: './ads.component.html',
-  styleUrls: ['./ads.component.scss']
+  styleUrls: ['./ads.component.scss'],
 })
 export class AdsComponent implements OnInit {
-
-  constructor() { }
+  ads: Ad[] = [];
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
+    this.httpService
+      .getData()
+      .subscribe({ next: (data: any) => (this.ads = data['ads']) });
   }
-
 }
