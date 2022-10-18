@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ad } from 'src/app/models/IAd';
+import { IUser } from 'src/app/models/IUser';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({

@@ -8,7 +8,7 @@
             <p class="text-white-50 mb-5">
               Please enter your login and password!
             </p>
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
               <div class="form-outline form-white mb-4">
                 <input
                   formControlName="email"
@@ -18,7 +18,14 @@
                 />
                 <label class="form-label" for="typeEmailX">Email</label>
                 <p>
-                  <small class="text-danger">Email is required</small>
+                  <small
+                    *ngIf="
+                      this.loginForm.get('email')?.invalid &&
+                      this.loginForm.get('email')?.touched
+                    "
+                    class="text-danger"
+                    >Email is required</small
+                  >
                 </p>
               </div>
 
@@ -31,12 +38,32 @@
                 />
                 <label class="form-label" for="typePasswordX">Password</label>
                 <p>
-                  <small class="text-danger"
+                  <small
+                    *ngIf="
+                      this.loginForm.get('password')?.invalid &&
+                      this.loginForm.get('password')?.touched
+                    "
+                    class="text-danger"
                     >Password is required (min. length = 8)</small
                   >
                 </p>
               </div>
-              <button class="btn btn-outline-light btn-lg px-5">Login</button>
+              <div class="form-outline form-white mb-4">
+                <input
+                  formControlName="role"
+                  type="text"
+                  id="typeRoleX"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="typeEmailX">Role</label>
+              </div>
+              <button
+                [disabled]="loginForm.invalid"
+                class="btn btn-outline-light btn-lg px-5"
+                type="submit"
+              >
+                Login
+              </button>
             </form>
           </div>
         </div>

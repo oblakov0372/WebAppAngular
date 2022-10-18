@@ -254,7 +254,7 @@ body {
     border-right: 1px solid #dfe2ec;
   }
 }
-.contact-me {
+.change {
   border: 0;
   outline: none;
   background: linear-gradient(
@@ -273,30 +273,36 @@ body {
   font-weight: 500;
   font-family: "Jost", sans-serif;
   transition: 0.3s;
+  &.delete {
+    background: linear-gradient(
+      to right,
+      rgba(248, 85, 67, 0.8) 0%,
+      rgba(255, 0, 0, 0.8) 96%
+    );
+  }
 }
+
 .modal {
-  display: block; /* Скрыто по умолчанию */
-  position: fixed; /* Оставаться на месте */
-  z-index: 1; /* Сидеть на вершине */
+  display: block;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Полная ширина */
-  height: 100%; /* Полная высота */
-  overflow: auto; /* Включите прокрутку, если это необходимо */
-  background-color: rgb(0, 0, 0); /* Цвет запасной вариант */
-  background-color: rgba(0, 0, 0, 0.4); /* Черный с непрозрачностью */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Модальное содержание/коробка */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% сверху и по центру */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Может быть больше или меньше, в зависимости от размера экрана */
+  width: 80%;
 }
 
-/* Кнопка закрытия */
 .close {
   color: #aaa;
   float: right;
