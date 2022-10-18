@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  isOpenModal = false;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  clickOpenModal() {
+    this.isOpenModal = !this.isOpenModal;
   }
-
 }
