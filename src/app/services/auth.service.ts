@@ -63,7 +63,20 @@ export class AuthService {
     });
   }
   logout() {
+    this.loggedInUser = Object();
     this.isLoggedIn = false;
-    this.setToken('');
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
+  }
+  changeData(name: string, password: string) {
+    this.loggedInUser.name = name;
+    this.loggedInUser.password = password;
+  }
+  deleteAcount(user: IUser) {
+    //delete from db
+    this.loggedInUser = Object();
+    this.isLoggedIn = false;
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 }

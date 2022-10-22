@@ -11,7 +11,7 @@
       src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
       alt="avatar"
     />
-    <h1 class="card-fullname">William Rocheald</h1>
+    <h1 class="card-fullname">{{ loggedUser.name }}</h1>
     <h2 class="card-jobtitle">UI Developer</h2>
   </div>
   <div class="card-main">
@@ -20,13 +20,13 @@
         <div class="card-subtitle">Your Information</div>
         <div class="card-contact-wrapper">
           <div class="card-contact">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path
-                d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"
+                d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
               />
             </svg>
-            <div class="icon-name">Username:</div>
-            Huilo
+            <div class="icon-name">Name:</div>
+            {{ loggedUser.name }}
           </div>
           <div class="card-contact">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -35,21 +35,14 @@
               />
             </svg>
             <div class="icon-name">Password:</div>
-            demasex
-          </div>
-          <div class="card-contact">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path
-                d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"
-              />
-            </svg>
-            <div class="icon-name">Mail:</div>
-            william@rocheald.com
+            {{ loggedUser.password }}
           </div>
           <button (click)="clickOpenModal()" class="change">
             Change Information
           </button>
-          <button class="change delete">Delete Account</button>
+          <button class="change delete" (click)="deleteAcount()">
+            Delete Account
+          </button>
         </div>
       </div>
     </div>
@@ -61,6 +54,30 @@
 <div *ngIf="isOpenModal" id="myModal" class="modal">
   <div class="modal-content">
     <span class="close" (click)="clickOpenModal()">&times;</span>
-    <p>sex on the bitch</p>
+    <form [formGroup]="changeForm" (ngSubmit)="changeData()">
+      <div class="form-outline form-white mb-4">
+        <input
+          [value]="loggedUser.name"
+          formControlName="name"
+          type="email"
+          id="typeEmailX"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label" for="typeEmailX">New Name</label>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <input
+          [value]="loggedUser.password"
+          formControlName="password"
+          type="password"
+          id="typePasswordX"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label" for="typePasswordX">New Password</label>
+      </div>
+      <button class="btn btn-outline-dark btn-lg px-5" type="submit">
+        Change
+      </button>
+    </form>
   </div>
 </div>
