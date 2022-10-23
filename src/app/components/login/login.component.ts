@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),
       ]),
-      role: new FormControl(),
+      role: new FormControl('', [Validators.required]),
     });
     if (this.authService.isLoggedIn) {
       this.router.navigate(['ads']);

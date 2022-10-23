@@ -1,6 +1,5 @@
 <div class="wrapper">
   <div class="card">
-    <!-- <img class='card-img' src='https://source.unsplash.com/random/?bike,city,night'> -->
     <div class="card-top">
       <div class="card-title">{{ ad.title }}</div>
       <img
@@ -16,10 +15,12 @@
     <div class="card-sub">Category: {{ ad.category }}</div>
     <div class="card-sub">Type: {{ ad.type }}</div>
     <div class="card-sub">
-      <strong>{{ ad.likes }} Likes</strong>
+      <strong>{{ ad.likes.length }} Likes</strong>
     </div>
     <div class="btn-keeper">
-      <a class="btn" href="#">Engage</a>
+      <a class="btn" (click)="onClickEngage()">{{
+        isEngage ? "Yoy engage already" : "Engage"
+      }}</a>
     </div>
   </div>
 </div>

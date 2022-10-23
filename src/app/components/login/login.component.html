@@ -56,6 +56,16 @@
                   class="form-control form-control-lg"
                 />
                 <label class="form-label" for="typeEmailX">Role</label>
+                <p>
+                  <small
+                    *ngIf="
+                      this.loginForm.get('role')?.invalid &&
+                      this.loginForm.get('role')?.touched
+                    "
+                    class="text-danger"
+                    >Password is required (min. length = 8)</small
+                  >
+                </p>
               </div>
               <button
                 [disabled]="loginForm.invalid"

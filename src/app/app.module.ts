@@ -13,6 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AdComponent } from './components/ad/ad.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrganizationAdsComponent } from './components/organization-ads/organization-ads.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotFoundComponent,
     HeaderComponent,
     AdComponent,
+    OrganizationAdsComponent,
   ],
   imports: [
     BrowserModule,

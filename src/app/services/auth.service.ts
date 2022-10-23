@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, throwError } from 'rxjs';
 import { IUser } from '../models/IUser';
-import { HttpClient } from '@angular/common/http';
 import { HttpService } from './http.service';
-import { User } from '../models/User';
 export enum Roles {
   user = 'user',
   organization = 'organization',
@@ -59,6 +56,7 @@ export class AuthService {
         this.role = Roles.organization;
         this.isLoggedIn = true;
         this.setToken(`dkqwd223${Roles.organization}dqwd213`);
+        this.router.navigate(['organization-ads']);
       }
     });
   }

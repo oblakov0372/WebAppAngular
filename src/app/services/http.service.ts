@@ -13,7 +13,9 @@ import { Organization } from '../models/Organization';
 export class HttpService {
   constructor(private http: HttpClient) {}
   getData() {
-    return this.http.get('assets/api.json');
+    return this.http.get<Ad[]>(
+      'https://634a821c5df952851412e642.mockapi.io/ad'
+    );
   }
   getUsersData(): Observable<User[]> {
     return this.http.get<User[]>(

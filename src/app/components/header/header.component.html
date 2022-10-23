@@ -10,6 +10,14 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="ads">Ads</a>
           </li>
+          <li class="nav-item">
+            <a
+              *ngIf="this.authService.role === 'organization'"
+              class="nav-link"
+              routerLink="organization-ads"
+              >Our Ads</a
+            >
+          </li>
         </ul>
         <ul
           class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute top-1 end-0"

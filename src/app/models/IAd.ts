@@ -4,7 +4,7 @@ export interface Ad {
   id: number;
   title: string;
   description: string;
-  likes: number;
+  likes: number[];
   type: Type;
   category: Category;
   appliedUsers: User[];
