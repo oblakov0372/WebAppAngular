@@ -12,7 +12,7 @@ import { Organization } from '../models/Organization';
 })
 export class HttpService {
   constructor(private http: HttpClient) {}
-  getData() {
+  getAds() {
     return this.http.get<Ad[]>(
       'https://634a821c5df952851412e642.mockapi.io/ad'
     );
