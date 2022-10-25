@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/IUser';
 import { AuthService } from 'src/app/services/auth.service';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +15,7 @@ export class ProfileComponent implements OnInit {
   changeForm!: FormGroup;
   loggedUser!: IUser;
   isOpenModal = false;
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService) {
     this.loggedUser = authService.loggedInUser;
   }
   changeData() {
@@ -31,7 +33,9 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteAcount() {
-    this.authService.deleteAcount(this.loggedUser);
+    if (confirm('Are uoy sure?')) {
+      this.authService.deleteAcount(this.loggedUser.id);
+    }
   }
 
   clickOpenModal() {

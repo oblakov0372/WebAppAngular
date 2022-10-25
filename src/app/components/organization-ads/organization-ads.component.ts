@@ -1,11 +1,13 @@
 import {
   Component,
+  DoCheck,
   OnChanges,
   OnInit,
   SimpleChange,
   SimpleChanges,
 } from '@angular/core';
 import { Ad } from 'src/app/models/IAd';
+import { AdsService } from 'src/app/services/ads.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -15,15 +17,11 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./organization-ads.component.scss'],
 })
 export class OrganizationAdsComponent implements OnInit {
-  ads!: Ad[];
   constructor(
-    private authService: AuthService,
+    public adsService: AdsService,
     private httpService: HttpService
   ) {}
   ngOnInit(): void {
-    this.httpService.getAds().subscribe({
-      next: (data: Ad[]) =>
-        (this.ads = data.filter((ad) => ad.organization === 2)),
-    });
+    this.adsService.getOrgAds();
   }
 }

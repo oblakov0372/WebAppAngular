@@ -41,6 +41,8 @@ export class AuthService {
         this.isLoggedIn = true;
         this.setToken(`dkqwd223${Roles.user}dqwd213`);
         this.router.navigate(['ads']);
+      } else {
+        alert('Пароль не верный');
       }
     });
   }
@@ -57,6 +59,8 @@ export class AuthService {
         this.isLoggedIn = true;
         this.setToken(`dkqwd223${Roles.organization}dqwd213`);
         this.router.navigate(['organization-ads']);
+      } else {
+        alert('Пароль не верный');
       }
     });
   }
@@ -70,11 +74,10 @@ export class AuthService {
     this.loggedInUser.name = name;
     this.loggedInUser.password = password;
   }
-  deleteAcount(user: IUser) {
+  deleteAcount(id: number) {
     //delete from db
-    this.loggedInUser = Object();
-    this.isLoggedIn = false;
-    localStorage.removeItem('token');
-    this.router.navigate(['login']);
+    this.httpService.deleteUser(id).subscribe(() => {
+      this.logout();
+    });
   }
 }

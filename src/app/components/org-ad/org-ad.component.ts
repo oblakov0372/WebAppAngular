@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   Input,
@@ -6,6 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Ad } from 'src/app/models/IAd';
+import { AdsService } from 'src/app/services/ads.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,9 +17,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class OrgAdComponent implements OnInit {
   @Input() ad!: Ad;
-  constructor(private authService: AuthService) {}
+  constructor(private adsService: AdsService) {}
   deleteAd() {
-    this.ad.id = -1;
+    this.adsService.deleteAd(this.ad.id);
   }
   ngOnInit(): void {}
 }
