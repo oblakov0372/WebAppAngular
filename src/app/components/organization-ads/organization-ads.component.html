@@ -1,3 +1,60 @@
+<img
+  (click)="onClickOpenModal()"
+  src="assets/img/add.png"
+  alt="addAd"
+  class="addAd"
+/>
 <div *ngFor="let ad of this.adsService.orgAds">
   <app-org-ad [ad]="ad"></app-org-ad>
+</div>
+
+<div *ngIf="isOpenModal" id="myModal" class="modal">
+  <div class="modal-content">
+    <span (click)="onClickOpenModal()" class="close">&times;</span>
+    <form [formGroup]="createForm">
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="title"
+          type="text"
+          id="typeEmailX"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label" for="typeEmailX">Title</label>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="description"
+          type="text"
+          id="typePasswordX"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label" for="typePasswordX">Description</label>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="type"
+          type="text"
+          id="typePasswordX"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label" for="typePasswordX">Type</label>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="category"
+          type="text"
+          id="typePasswordX"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label" for="typePasswordX">Category</label>
+      </div>
+      <button
+        (click)="createAd()"
+        class="btn btn-outline-dark btn-lg px-5"
+        type="submit"
+      >
+        Create
+      </button>
+    </form>
+  </div>
 </div>

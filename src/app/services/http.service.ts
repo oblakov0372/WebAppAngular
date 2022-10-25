@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ad } from '../models/IAd';
+import { Ad, Category, Type } from '../models/IAd';
 import { map } from 'rxjs/operators';
 import { IUser } from '../models/IUser';
 import { User } from '../models/User';
@@ -35,6 +35,12 @@ export class HttpService {
   deleteUser(id: number): Observable<IUser> {
     return this.http.delete<IUser>(
       `https://634a821c5df952851412e642.mockapi.io/user/${id}`
+    );
+  }
+  addAd(ad: Ad): Observable<Ad> {
+    return this.http.post<Ad>(
+      'https://634a821c5df952851412e642.mockapi.io/ad',
+      ad
     );
   }
 }

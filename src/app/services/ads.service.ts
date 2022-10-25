@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Ad } from '../models/IAd';
+import { Ad, Category, Status, Type } from '../models/IAd';
 import { Organization } from '../models/Organization';
 import { AuthService } from './auth.service';
 import { HttpService } from './http.service';
@@ -28,5 +28,18 @@ export class AdsService {
     this.httpService.deleteAd(id).subscribe(() => {
       this.orgAds = this.orgAds.filter((ad) => ad.id !== id);
     });
+  }
+  addAd(title: string, description: string, type: Type, category: Category) {
+    let ad: Ad = {
+      id: 0,
+      title,
+      description,
+      type,
+      category,
+      likes: [],
+      appliedUsers: new Map<number, Status>(),
+      organization: this.authService.loggedInUser.id,
+    };
+    this.httpService.addAd(ad).subscribe(() => this.getOrgAds());
   }
 }

@@ -10,18 +10,18 @@ export interface Ad {
   organization: number;
 }
 
-enum Type {
+export enum Type {
   partTime = 'part-time',
   fullTime = 'full-time',
   remote = 'remote',
 }
 
-enum Category {
+export enum Category {
   officeAdministration = 'Office administration',
   development = 'Development',
 }
 
-enum Status {
+export enum Status {
   rejected = 'Rejected',
   confirmed = 'Confirmed',
   notViewed = 'Not Viewed',
