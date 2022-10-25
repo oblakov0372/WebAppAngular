@@ -1,5 +1,4 @@
 import { User } from './User';
-
 export interface Ad {
   id: number;
   title: string;
@@ -7,7 +6,7 @@ export interface Ad {
   type: Type;
   category: Category;
   likes: number[];
-  appliedUsers: User[];
+  appliedUsers: Map<number, Status>;
   organization: number;
 }
 
