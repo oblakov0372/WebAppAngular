@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ad } from 'src/app/models/IAd';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService, Roles } from 'src/app/services/auth.service';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class AdComponent implements OnInit {
   constructor(
     private router: Router,
     private httpSetvice: HttpService,
-    private authService: AuthService
+    public authService: AuthService
   ) {}
   onClickLike() {
     if (this.authService.isLoggedIn) {

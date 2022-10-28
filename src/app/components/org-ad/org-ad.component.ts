@@ -19,10 +19,12 @@ import { AuthService } from 'src/app/services/auth.service';
 export class OrgAdComponent implements OnInit {
   @Input() ad!: Ad;
   isOpenModal = false;
+  isDeleted = false;
   editForm!: FormGroup;
   constructor(private adsService: AdsService) {}
   deleteAd() {
     this.adsService.deleteAd(this.ad.id);
+    this.isDeleted = true;
   }
   editAd() {
     this.isOpenModal = false;

@@ -38,8 +38,8 @@ export class AdsService {
     this.httpService.addAd(ad).subscribe(() => this.getOrgAds());
   }
   deleteAd(id: number) {
-    this.httpService.deleteAd(id).subscribe(() => {
-      this.orgAds = this.orgAds.filter((ad) => ad.id !== id);
+    this.httpService.deleteAd(id).subscribe((deletedAd) => {
+      this.orgAds = this.orgAds.filter((ad) => ad.id !== deletedAd.id);
     });
   }
   editAd(ad: Ad) {

@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="card">
+  <div class="card" *ngIf="!isDeleted">
     <div class="card-top">
       <img
         class="editAd"
@@ -24,6 +24,7 @@
       <strong>Likes {{ ad.likes.length }}</strong>
     </div>
   </div>
+  <div class="card" *ngIf="isDeleted">Deleted</div>
 </div>
 
 <div *ngIf="isOpenModal" id="myModal" class="modal">
@@ -46,26 +47,77 @@
         />
         <label class="form-label">Description</label>
       </div>
-      <div class="form-outline form-white mb-4">
+      <!-- <div class="form-outline form-white mb-4">
         <input
           formControlName="type"
           type="text"
           class="form-control form-control-lg"
         />
         <label class="form-label">Type</label>
-      </div>
-      <div class="form-outline form-white mb-4">
+      </div> -->
+      <!-- <div class="form-outline form-white mb-4">
         <input
           formControlName="category"
           type="text"
           class="form-control form-control-lg"
-        />
+        /> 
         <label class="form-label">Category</label>
+      </div> -->
+      <!-- Type -->
+      <div class="form-outline form-white mb-4 form-radio">
+        <label class="radio-inline leftRadio">
+          <input
+            type="radio"
+            value="remote"
+            name="type"
+            formControlName="type"
+          />
+          Remote
+        </label>
+        <label class="radio-inline rightRadio">
+          <input
+            type="radio"
+            value="part-time"
+            name="type"
+            formControlName="type"
+          />
+          Part time
+        </label>
+        <label class="radio-inline rightRadio">
+          <input
+            type="radio"
+            value="full-time"
+            name="type"
+            formControlName="type"
+          />
+          Full time
+        </label>
+      </div>
+      <!-- Category -->
+      <div class="form-outline form-white mb-4 form-radio">
+        <label class="radio-inline leftRadio">
+          <input
+            type="radio"
+            value="Office administration"
+            name="category"
+            formControlName="category"
+          />
+          Office administration
+        </label>
+        <label class="radio-inline rightRadio">
+          <input
+            type="radio"
+            value="Development"
+            name="category"
+            formControlName="category"
+          />
+          Development
+        </label>
       </div>
       <button
         (click)="editAd()"
         class="btn btn-outline-dark btn-lg px-5"
-        type="submit"
+        type="button"
       >
         Edit
       </button>
