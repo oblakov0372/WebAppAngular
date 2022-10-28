@@ -48,24 +48,25 @@
                   >
                 </p>
               </div>
-              <div class="form-outline form-white mb-4">
-                <input
-                  formControlName="role"
-                  type="text"
-                  id="typeRoleX"
-                  class="form-control form-control-lg"
-                />
-                <label class="form-label" for="typeEmailX">Role</label>
-                <p>
-                  <small
-                    *ngIf="
-                      this.loginForm.get('role')?.invalid &&
-                      this.loginForm.get('role')?.touched
-                    "
-                    class="text-danger"
-                    >Password is required (min. length = 8)</small
-                  >
-                </p>
+              <div class="form-outline form-white mb-4 form-radio">
+                <label class="radio-inline leftRadio">
+                  <input
+                    type="radio"
+                    value="user"
+                    name="role"
+                    formControlName="role"
+                  />
+                  User
+                </label>
+                <label class="radio-inline rightRadio">
+                  <input
+                    type="radio"
+                    value="organization"
+                    name="role"
+                    formControlName="role"
+                  />
+                  Organization
+                </label>
               </div>
               <button
                 [disabled]="loginForm.invalid"
