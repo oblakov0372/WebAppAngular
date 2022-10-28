@@ -20,6 +20,7 @@ export class OrgAdComponent implements OnInit {
   @Input() ad!: Ad;
   isOpenModal = false;
   isDeleted = false;
+  isOpenAppliedUsers = false;
   editForm!: FormGroup;
   constructor(private adsService: AdsService) {}
   deleteAd() {
@@ -41,6 +42,10 @@ export class OrgAdComponent implements OnInit {
     console.log(editedAd);
     this.adsService.editAd(editedAd);
     this.ad = editedAd;
+  }
+  onClickAppliedUsers() {
+    this.isOpenAppliedUsers = !this.isOpenAppliedUsers;
+    console.log(123);
   }
   onClickOpenModal() {
     this.isOpenModal = !this.isOpenModal;

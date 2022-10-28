@@ -23,6 +23,25 @@
     <div class="card-sub">
       <strong>Likes {{ ad.likes.length }}</strong>
     </div>
+    <button
+      *ngIf="!isOpenAppliedUsers"
+      (click)="onClickAppliedUsers()"
+      type="button"
+      class="btn btn-primary"
+      style="width: 30%; margin: 0px auto"
+    >
+      Applied Users
+    </button>
+    <div *ngIf="isOpenAppliedUsers" class="candidates-users">
+      <button
+        (click)="onClickAppliedUsers()"
+        type="button"
+        class="btn btn-primary"
+        style="width: 30%; position: relative; left: 35%"
+      >
+        Hide Information
+      </button>
+    </div>
   </div>
   <div class="card" *ngIf="isDeleted">Deleted</div>
 </div>
@@ -31,6 +50,7 @@
   <div class="modal-content">
     <span (click)="onClickOpenModal()" class="close">&times;</span>
     <form [formGroup]="editForm">
+      <!-- Title -->
       <div class="form-outline form-white mb-4">
         <input
           formControlName="title"
@@ -39,6 +59,7 @@
         />
         <label class="form-label">Title</label>
       </div>
+      <!-- Description -->
       <div class="form-outline form-white mb-4">
         <input
           formControlName="description"
@@ -47,25 +68,9 @@
         />
         <label class="form-label">Description</label>
       </div>
-      <!-- <div class="form-outline form-white mb-4">
-        <input
-          formControlName="type"
-          type="text"
-          class="form-control form-control-lg"
-        />
-        <label class="form-label">Type</label>
-      </div> -->
-      <!-- <div class="form-outline form-white mb-4">
-        <input
-          formControlName="category"
-          type="text"
-          class="form-control form-control-lg"
-        /> 
-        <label class="form-label">Category</label>
-      </div> -->
       <!-- Type -->
       <div class="form-outline form-white mb-4 form-radio">
-        <label class="radio-inline leftRadio">
+        <label class="radio-inline">
           <input
             type="radio"
             value="remote"
@@ -74,7 +79,7 @@
           />
           Remote
         </label>
-        <label class="radio-inline rightRadio">
+        <label class="radio-inline">
           <input
             type="radio"
             value="part-time"
@@ -83,7 +88,7 @@
           />
           Part time
         </label>
-        <label class="radio-inline rightRadio">
+        <label class="radio-inline">
           <input
             type="radio"
             value="full-time"
@@ -95,7 +100,7 @@
       </div>
       <!-- Category -->
       <div class="form-outline form-white mb-4 form-radio">
-        <label class="radio-inline leftRadio">
+        <label class="radio-inline">
           <input
             type="radio"
             value="Office administration"
@@ -104,7 +109,7 @@
           />
           Office administration
         </label>
-        <label class="radio-inline rightRadio">
+        <label class="radio-inline">
           <input
             type="radio"
             value="Development"
@@ -114,10 +119,11 @@
           Development
         </label>
       </div>
+      <!-- Submit -->
       <button
         (click)="editAd()"
         class="btn btn-outline-dark btn-lg px-5"
-        type="button"
+        type="submit"
       >
         Edit
       </button>
