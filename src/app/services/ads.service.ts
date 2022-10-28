@@ -24,11 +24,6 @@ export class AdsService {
           ))
       );
   }
-  deleteAd(id: number) {
-    this.httpService.deleteAd(id).subscribe(() => {
-      this.orgAds = this.orgAds.filter((ad) => ad.id !== id);
-    });
-  }
   addAd(title: string, description: string, type: Type, category: Category) {
     let ad: Ad = {
       id: 0,
@@ -41,5 +36,17 @@ export class AdsService {
       organization: this.authService.loggedInUser.id,
     };
     this.httpService.addAd(ad).subscribe(() => this.getOrgAds());
+  }
+  deleteAd(id: number) {
+    this.httpService.deleteAd(id).subscribe(() => {
+      this.orgAds = this.orgAds.filter((ad) => ad.id !== id);
+    });
+  }
+  editAd(ad: Ad) {
+    console.log(this.orgAds);
+    this.httpService.editAd(ad).subscribe((_ad) => {
+      console.log(_ad);
+    });
+    console.log(this.orgAds);
   }
 }

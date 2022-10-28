@@ -6,6 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Ad } from 'src/app/models/IAd';
 import { AdsService } from 'src/app/services/ads.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,9 +18,38 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class OrgAdComponent implements OnInit {
   @Input() ad!: Ad;
+  isOpenModal = false;
+  editForm!: FormGroup;
   constructor(private adsService: AdsService) {}
   deleteAd() {
     this.adsService.deleteAd(this.ad.id);
   }
-  ngOnInit(): void {}
+  editAd() {
+    this.isOpenModal = false;
+    let editedAd: Ad = {
+      id: this.ad.id,
+      title: this.editForm.value.title,
+      description: this.editForm.value.description,
+      type: this.editForm.value.type,
+      category: this.editForm.value.category,
+      likes: this.ad.likes,
+      appliedUsers: this.ad.appliedUsers,
+      organization: this.ad.organization,
+    };
+    console.log(editedAd);
+    this.adsService.editAd(editedAd);
+    this.ad = editedAd;
+  }
+  onClickOpenModal() {
+    this.isOpenModal = !this.isOpenModal;
+  }
+
+  ngOnInit(): void {
+    this.editForm = new FormGroup({
+      title: new FormControl(`${this.ad.title}`),
+      description: new FormControl(`${this.ad.description}`),
+      type: new FormControl(`${this.ad.type}`),
+      category: new FormControl(`${this.ad.category}`),
+    });
+  }
 }

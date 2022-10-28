@@ -1,12 +1,20 @@
 <div class="wrapper">
   <div class="card">
     <div class="card-top">
+      <img
+        class="editAd"
+        width="30px"
+        src="assets/img/pencil.png"
+        alt="edit"
+        (click)="onClickOpenModal()"
+      />
       <div class="card-title">{{ ad.title }}</div>
       <img
+        class="deleteAd"
         (click)="deleteAd()"
         src="assets/img/trash-solid.svg"
         width="30px"
-        alt="wqdqw"
+        alt="delete"
       />
     </div>
     <div class="card-sub">{{ ad.description }}</div>
@@ -15,5 +23,52 @@
     <div class="card-sub">
       <strong>Likes {{ ad.likes.length }}</strong>
     </div>
+  </div>
+</div>
+
+<div *ngIf="isOpenModal" id="myModal" class="modal">
+  <div class="modal-content">
+    <span (click)="onClickOpenModal()" class="close">&times;</span>
+    <form [formGroup]="editForm">
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="title"
+          type="text"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label">Title</label>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="description"
+          type="text"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label">Description</label>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="type"
+          type="text"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label">Type</label>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <input
+          formControlName="category"
+          type="text"
+          class="form-control form-control-lg"
+        />
+        <label class="form-label">Category</label>
+      </div>
+      <button
+        (click)="editAd()"
+        class="btn btn-outline-dark btn-lg px-5"
+        type="submit"
+      >
+        Edit
+      </button>
+    </form>
   </div>
 </div>

@@ -20,10 +20,7 @@ import { HttpService } from 'src/app/services/http.service';
 export class OrganizationAdsComponent implements OnInit {
   isOpenModal: boolean = false;
   createForm!: FormGroup;
-  constructor(
-    public adsService: AdsService,
-    private httpService: HttpService
-  ) {}
+  constructor(public adsService: AdsService) {}
   ngOnInit(): void {
     this.adsService.getOrgAds();
     this.createForm = new FormGroup({

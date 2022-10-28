@@ -43,4 +43,10 @@ export class HttpService {
       ad
     );
   }
+  editAd(ad: Ad): Observable<Ad> {
+    return this.http.put<Ad>(
+      `https://634a821c5df952851412e642.mockapi.io/ad/${ad.id}`,
+      ad
+    );
+  }
 }
