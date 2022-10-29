@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Ad } from '../models/IAd';
 import { IUser } from '../models/IUser';
+import { AdsService } from './ads.service';
 import { HttpService } from './http.service';
 export enum Roles {
   user = 'user',
@@ -13,7 +15,11 @@ export class AuthService {
   role!: Roles;
   isLoggedIn = false;
   loggedInUser!: IUser;
-  constructor(private httpService: HttpService, private router: Router) {}
+  constructor(
+    private httpService: HttpService,
+    private router: Router,
+    private adsServices: AdsService
+  ) {}
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
@@ -75,9 +81,19 @@ export class AuthService {
     this.loggedInUser.password = password;
   }
   deleteAcount(id: number) {
-    //delete from db
-    this.httpService.deleteUser(id).subscribe(() => {
-      this.logout();
-    });
+    if (this.role === Roles.organization) {
+      this.adsServices.getOrgAds();
+      let ads: Ad[] = this.adsServices.orgAds;
+      ads.forEach((ad) => {
+        this.adsServices.deleteAd(ad.id);
+      });
+      this.httpService.deleteOrganization(id).subscribe(() => {
+        this.logout();
+      });
+    } else {
+      this.httpService.deleteUser(id).subscribe(() => {
+        this.logout();
+      });
+    }
   }
 }

@@ -32,7 +32,7 @@ export class AdsService {
       type,
       category,
       likes: [],
-      appliedUsers: new Map<number, Status>(),
+      appliedUsers: [],
       organization: this.authService.loggedInUser.id,
     };
     this.httpService.addAd(ad).subscribe(() => this.getOrgAds());
@@ -48,5 +48,11 @@ export class AdsService {
       console.log(_ad);
     });
     console.log(this.orgAds);
+  }
+
+  updateAd(ad: Ad) {
+    this.httpService.editAd(ad).subscribe(() => {
+      console.log(ad);
+    });
   }
 }

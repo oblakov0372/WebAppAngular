@@ -7,7 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Ad } from 'src/app/models/IAd';
+import { Ad, Status } from 'src/app/models/IAd';
 import { AdsService } from 'src/app/services/ads.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -23,6 +23,31 @@ export class OrgAdComponent implements OnInit {
   isOpenAppliedUsers = false;
   editForm!: FormGroup;
   constructor(private adsService: AdsService) {}
+
+  ngOnInit(): void {
+    this.editForm = new FormGroup({
+      title: new FormControl(`${this.ad.title}`),
+      description: new FormControl(`${this.ad.description}`),
+      type: new FormControl(`${this.ad.type}`),
+      category: new FormControl(`${this.ad.category}`),
+    });
+  }
+  acceptCandidate(_id: number) {
+    this.ad.appliedUsers = this.ad.appliedUsers.filter(
+      (user) => user.id !== _id
+    );
+    this.ad.appliedUsers.push({ id: _id, status: Status.confirmed });
+    this.adsService.editAd(this.ad);
+  }
+
+  rejectCandidate(_id: number) {
+    this.ad.appliedUsers = this.ad.appliedUsers.filter(
+      (user) => user.id !== _id
+    );
+    this.ad.appliedUsers.push({ id: _id, status: Status.rejected });
+    this.adsService.editAd(this.ad);
+  }
+
   deleteAd() {
     this.adsService.deleteAd(this.ad.id);
     this.isDeleted = true;
@@ -45,18 +70,8 @@ export class OrgAdComponent implements OnInit {
   }
   onClickAppliedUsers() {
     this.isOpenAppliedUsers = !this.isOpenAppliedUsers;
-    console.log(123);
   }
   onClickOpenModal() {
     this.isOpenModal = !this.isOpenModal;
-  }
-
-  ngOnInit(): void {
-    this.editForm = new FormGroup({
-      title: new FormControl(`${this.ad.title}`),
-      description: new FormControl(`${this.ad.description}`),
-      type: new FormControl(`${this.ad.type}`),
-      category: new FormControl(`${this.ad.category}`),
-    });
   }
 }

@@ -24,7 +24,7 @@
       <strong>Likes {{ ad.likes.length }}</strong>
     </div>
     <button
-      *ngIf="!isOpenAppliedUsers"
+      *ngIf="!isOpenAppliedUsers && ad.appliedUsers.length"
       (click)="onClickAppliedUsers()"
       type="button"
       class="btn btn-primary"
@@ -33,6 +33,30 @@
       Applied Users
     </button>
     <div *ngIf="isOpenAppliedUsers" class="candidates-users">
+      <h1>Candidates</h1>
+      <div *ngFor="let user of this.ad.appliedUsers">
+        <div>
+          <h4>User id: {{ user.id }}</h4>
+          <h4>Status: {{ user.status }}</h4>
+        </div>
+        <div class="flex-between buttons">
+          <button
+            *ngIf="user.status !== 'Confirmed'"
+            (click)="acceptCandidate(user.id)"
+            class="btn confirm"
+          >
+            Confirm Candidate
+          </button>
+          <button
+            *ngIf="user.status !== 'Rejected'"
+            (click)="rejectCandidate(user.id)"
+            class="btn reject"
+          >
+            Rejected Candidate
+          </button>
+        </div>
+        <hr />
+      </div>
       <button
         (click)="onClickAppliedUsers()"
         type="button"

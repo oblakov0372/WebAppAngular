@@ -37,6 +37,11 @@ export class HttpService {
       `https://634a821c5df952851412e642.mockapi.io/user/${id}`
     );
   }
+  deleteOrganization(id: number): Observable<IUser> {
+    return this.http.delete<IUser>(
+      `https://634a821c5df952851412e642.mockapi.io/organization/${id}`
+    );
+  }
   addAd(ad: Ad): Observable<Ad> {
     return this.http.post<Ad>(
       'https://634a821c5df952851412e642.mockapi.io/ad',

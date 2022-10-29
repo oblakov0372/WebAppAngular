@@ -59,7 +59,7 @@ body {
 }
 
 .btn {
-  background-color: #846a6a;
+  background-color: #0e0000;
   padding: 7px 12px;
   text-decoration: none;
   color: #eee;
@@ -110,4 +110,24 @@ body {
   display: flex;
   justify-content: space-between;
   width: 30%;
+}
+
+.candidates-users {
+  padding-top: 20px;
+
+  border-top: 1px solid grey;
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+  }
+  .acept {
+    &:hover {
+      background-color: #0ac400;
+    }
+  }
+  .reject {
+    &:hover {
+      background-color: #ff0000;
+    }
+  }
 }

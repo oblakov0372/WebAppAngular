@@ -1,4 +1,3 @@
-import { User } from './User';
 export interface Ad {
   id: number;
   title: string;
@@ -6,8 +5,12 @@ export interface Ad {
   type: Type;
   category: Category;
   likes: number[];
-  appliedUsers: Map<number, Status>;
+  appliedUsers: AppliedUser[];
   organization: number;
+}
+export interface AppliedUser {
+  id: number;
+  status: Status;
 }
 
 export enum Type {
