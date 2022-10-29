@@ -13,11 +13,11 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class AdsComponent implements OnInit {
   ads: Ad[] = [];
-  constructor(private httpService: HttpService, private http: HttpClient) {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
-    this.httpService
-      .getAds()
-      .subscribe({ next: (data: any) => (this.ads = data) });
+    this.httpService.getAds().subscribe((ads) => {
+      this.ads = ads;
+    });
   }
 }

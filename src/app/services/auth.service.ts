@@ -15,11 +15,7 @@ export class AuthService {
   role!: Roles;
   isLoggedIn = false;
   loggedInUser!: IUser;
-  constructor(
-    private httpService: HttpService,
-    private router: Router,
-    private adsServices: AdsService
-  ) {}
+  constructor(private httpService: HttpService, private router: Router) {}
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
@@ -82,11 +78,11 @@ export class AuthService {
   }
   deleteAcount(id: number) {
     if (this.role === Roles.organization) {
-      this.adsServices.getOrgAds();
-      let ads: Ad[] = this.adsServices.orgAds;
-      ads.forEach((ad) => {
-        this.adsServices.deleteAd(ad.id);
-      });
+      // this.adsServices.getOrgAds();
+      // let ads: Ad[] = this.adsServices.orgAds;
+      // ads.forEach((ad) => {
+      //   this.adsServices.deleteAd(ad.id);
+      // });
       this.httpService.deleteOrganization(id).subscribe(() => {
         this.logout();
       });

@@ -12,7 +12,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class AdComponent implements OnInit {
   @Input() ad!: Ad;
-  isClickLike!: boolean;
+  isClickLike = false;
   isEngage = false;
   constructor(
     private router: Router,
@@ -45,10 +45,12 @@ export class AdComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    if (this.ad.likes.includes(this.authService.loggedInUser.id)) {
-      this.isClickLike = true;
-    } else {
-      this.isClickLike = false;
+    if (this.authService.isLoggedIn) {
+      if (this.ad.likes.includes(this.authService.loggedInUser.id)) {
+        this.isClickLike = true;
+      } else {
+        this.isClickLike = false;
+      }
     }
   }
 }
