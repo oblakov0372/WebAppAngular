@@ -17,10 +17,14 @@
     <div class="card-sub">
       <strong>{{ ad.likes.length }} Likes</strong>
     </div>
-    <div class="btn-keeper" *ngIf="this.authService.role === 'user'">
-      <a class="btn" (click)="onClickEngage()">{{
-        isEngage ? "Yoy engage already" : "Engage"
-      }}</a>
+    <div
+      class="btn-keeper"
+      *ngIf="this.authService.role === 'user' && !isEngage"
+    >
+      <a class="btn" (click)="onClickEngage()"> Engage </a>
     </div>
+    <strong class="card-sub" *ngIf="isEngage"
+      >You engage now,<br />Your status: {{ userStatus }}</strong
+    >
   </div>
 </div>

@@ -14,6 +14,7 @@ export class AdComponent implements OnInit {
   @Input() ad!: Ad;
   isClickLike = false;
   isEngage = false;
+  userStatus!: Status | undefined;
   constructor(
     private router: Router,
     public authService: AuthService,
@@ -36,20 +37,34 @@ export class AdComponent implements OnInit {
     }
   }
   onClickEngage() {
-    if (this.authService.isLoggedIn) {
-      this.isEngage = !this.isEngage;
-    } else {
-      if (confirm('You must log in')) {
-        this.router.navigate(['login']);
-      }
-    }
+    this.isEngage = !this.isEngage;
+    this.ad.appliedUsers.push({
+      id: this.authService.loggedInUser.id,
+      status: Status.notViewed,
+    });
+    this.adsService.updateAd(this.ad);
+    this.userStatus = Status.notViewed;
   }
   ngOnInit(): void {
     if (this.authService.isLoggedIn) {
+      this.userStatus = this.ad.appliedUsers.find(
+        (user) => user.id === this.authService.loggedInUser.id
+      )?.status;
+      // Like
       if (this.ad.likes.includes(this.authService.loggedInUser.id)) {
         this.isClickLike = true;
       } else {
         this.isClickLike = false;
+      }
+      // Engage
+      if (
+        this.ad.appliedUsers.filter(
+          (user) => user.id === this.authService.loggedInUser.id
+        ).length !== 0
+      ) {
+        this.isEngage = true;
+      } else {
+        this.isEngage = false;
       }
     }
   }
