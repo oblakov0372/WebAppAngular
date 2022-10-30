@@ -27,8 +27,10 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit(): void {
     this.changeForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.email]),
+      name: new FormControl(this.loggedUser.name, [Validators.required]),
+      password: new FormControl(this.loggedUser.password, [
+        Validators.required,
+      ]),
     });
   }
 

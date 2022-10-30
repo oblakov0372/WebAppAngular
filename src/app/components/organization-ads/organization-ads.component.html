@@ -30,23 +30,56 @@
         />
         <label class="form-label" for="typePasswordX">Description</label>
       </div>
-      <div class="form-outline form-white mb-4">
-        <input
-          formControlName="type"
-          type="text"
-          id="typePasswordX"
-          class="form-control form-control-lg"
-        />
-        <label class="form-label" for="typePasswordX">Type</label>
+      <!-- Type -->
+      <div class="form-outline form-white mb-4 form-radio">
+        <label class="radio-inline">
+          <input
+            type="radio"
+            value="remote"
+            name="type"
+            formControlName="type"
+          />
+          Remote
+        </label>
+        <label class="radio-inline">
+          <input
+            type="radio"
+            value="part-time"
+            name="type"
+            formControlName="type"
+          />
+          Part time
+        </label>
+        <label class="radio-inline">
+          <input
+            type="radio"
+            value="full-time"
+            name="type"
+            formControlName="type"
+          />
+          Full time
+        </label>
       </div>
-      <div class="form-outline form-white mb-4">
-        <input
-          formControlName="category"
-          type="text"
-          id="typePasswordX"
-          class="form-control form-control-lg"
-        />
-        <label class="form-label" for="typePasswordX">Category</label>
+      <!-- Category -->
+      <div class="form-outline form-white mb-4 form-radio">
+        <label class="radio-inline">
+          <input
+            type="radio"
+            value="Office administration"
+            name="category"
+            formControlName="category"
+          />
+          Office administration
+        </label>
+        <label class="radio-inline">
+          <input
+            type="radio"
+            value="Development"
+            name="category"
+            formControlName="category"
+          />
+          Development
+        </label>
       </div>
       <button
         (click)="createAd()"

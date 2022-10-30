@@ -3,6 +3,7 @@
     <div class="card-top">
       <div class="card-title">{{ ad.title }}</div>
       <img
+        *ngIf="this.authService.role === 'user'"
         (click)="onClickLike()"
         src="assets/img/{{ isClickLike ? 'unlike.svg' : 'like.svg' }}"
         width="40px"
@@ -23,7 +24,9 @@
     >
       <a class="btn" (click)="onClickEngage()"> Engage </a>
     </div>
-    <strong class="card-sub" *ngIf="isEngage"
+    <strong
+      class="card-sub"
+      *ngIf="isEngage && this.authService.role === 'user'"
       >You engage now,<br />Your status: {{ userStatus }}</strong
     >
   </div>

@@ -75,14 +75,27 @@ export class AuthService {
   changeData(name: string, password: string) {
     this.loggedInUser.name = name;
     this.loggedInUser.password = password;
+    if (this.role === Roles.user) {
+      this.httpService.editUser(this.loggedInUser).subscribe(() => {
+        console.log(this.loggedInUser);
+      });
+    } else if (this.role === Roles.organization) {
+      this.httpService.editOrganization(this.loggedInUser).subscribe(() => {
+        console.log(this.loggedInUser);
+      });
+    }
   }
   deleteAcount(id: number) {
     if (this.role === Roles.organization) {
-      // this.adsServices.getOrgAds();
-      // let ads: Ad[] = this.adsServices.orgAds;
-      // ads.forEach((ad) => {
-      //   this.adsServices.deleteAd(ad.id);
-      // });
+      this.httpService.getAds().subscribe((_ads) => {
+        _ads
+          .filter((ad) => ad.organization === this.loggedInUser.id)
+          .forEach((ad) => {
+            this.httpService.deleteAd(ad.id).subscribe(() => {
+              console.log(ad);
+            });
+          });
+      });
       this.httpService.deleteOrganization(id).subscribe(() => {
         this.logout();
       });

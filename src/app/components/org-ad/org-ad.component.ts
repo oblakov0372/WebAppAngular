@@ -26,10 +26,10 @@ export class OrgAdComponent implements OnInit {
 
   ngOnInit(): void {
     this.editForm = new FormGroup({
-      title: new FormControl(`${this.ad.title}`),
-      description: new FormControl(`${this.ad.description}`),
-      type: new FormControl(`${this.ad.type}`),
-      category: new FormControl(`${this.ad.category}`),
+      title: new FormControl(this.ad.title),
+      description: new FormControl(this.ad.description),
+      type: new FormControl(this.ad.type),
+      category: new FormControl(this.ad.category),
     });
   }
   acceptCandidate(_id: number) {

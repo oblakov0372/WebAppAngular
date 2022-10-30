@@ -54,4 +54,16 @@ export class HttpService {
       ad
     );
   }
+  editUser(user: IUser) {
+    return this.http.put<IUser>(
+      `https://634a821c5df952851412e642.mockapi.io/user/${user.id}`,
+      user
+    );
+  }
+  editOrganization(organization: IUser) {
+    return this.http.put<IUser>(
+      `https://634a821c5df952851412e642.mockapi.io/organization/${organization.id}`,
+      organization
+    );
+  }
 }

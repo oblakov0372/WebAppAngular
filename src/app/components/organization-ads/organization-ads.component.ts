@@ -24,10 +24,10 @@ export class OrganizationAdsComponent implements OnInit {
   ngOnInit(): void {
     this.adsService.getOrgAds();
     this.createForm = new FormGroup({
-      title: new FormControl(''),
-      description: new FormControl(''),
-      type: new FormControl('remote'),
-      category: new FormControl('Office administration'),
+      title: new FormControl(),
+      description: new FormControl(),
+      type: new FormControl(),
+      category: new FormControl(),
     });
   }
   onClickOpenModal() {
